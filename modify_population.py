@@ -19,14 +19,14 @@ def save_file(fname, data_bytes):
 
 
 def decompress(data_bytes):
-    decompress = zlib.decompressobj(wbits=-15)
+    decompress = zlib.decompressobj()
     decomed = decompress.decompress(data_bytes)
     decomed = decomed + decompress.flush()
     return decomed
 
 
 def compress(data_bytes):
-    compress = zlib.compressobj(wbits=-15)
+    compress = zlib.compressobj()
     comed = compress.compress(data_bytes)
     comed = comed + compress.flush()
     return comed
@@ -87,8 +87,8 @@ def modify_population_8():
     data_bytes = bytearray(data_bytes)
 
     # slice data
-    header = data_bytes[0:34]
-    data_bytes = data_bytes[34:]
+    header = data_bytes[0:32]
+    data_bytes = data_bytes[32:]
 
     # decode concent
     decomed_data_bytes = decompress(data_bytes)
@@ -132,8 +132,8 @@ def modify_population_12():
     data_bytes = bytearray(data_bytes)
 
     # slice data
-    header = data_bytes[0:34]
-    data_bytes = data_bytes[34:]
+    header = data_bytes[0:32]
+    data_bytes = data_bytes[32:]
 
     # decode concent
     decomed_data_bytes = decompress(data_bytes)
